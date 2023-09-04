@@ -1,4 +1,10 @@
 #!/usr/bin/python3
 str = "Python is an interpreted, interactive, object-oriented programming\
- language that combines remarkable power with very clear syntax"
-print(str[69:98] + str[98:100] + str[113:120] + str[0:6])
+        language that combines remarkable power with very clear syntax"
+
+substring1 = str[39:67]
+substring2 = str[107:112]
+substring3 = str[:6]
+
+result = substring1 + substring2 + substring3
+print(result)
