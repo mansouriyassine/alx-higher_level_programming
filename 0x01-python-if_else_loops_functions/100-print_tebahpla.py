@@ -1,11 +1,3 @@
 #!/usr/bin/python3
-
-for char_code in range(ord('z'), ord('A') - 1, -1):
-    if char_code > ord('A'):
-        char = chr(char_code)
-        if char.isalpha():
-            if char_code % 2 == 1:
-                char = char.upper()
-            print("{}".format(char), end='')
-
-print()
+for c in range(ord('z'), ord('a') - 1, -1):
+    print("{:c}".format(c if c % 2 == 0 else c - 32), end="")
