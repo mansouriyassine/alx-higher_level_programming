@@ -1,6 +1,4 @@
 #!/usr/bin/python3
 
-for letter in range(ord('a'), ord('z') + 1):
-    print("{:c}".format(letter), end='')
-
-print()
+alphabet = ''.join(chr(ord('a') + i) for i in range(26))
+print("{}".format(alphabet), end='')
