@@ -1,3 +1,8 @@
 #!/usr/bin/python3
 import string
-print(''.join(getattr(string, 'ascii_uppercase')))
+
+def print_uppercase_alphabet():
+    print(string.ascii_uppercase)
+
+if __name__ == "__main__":
+    print_uppercase_alphabet()
