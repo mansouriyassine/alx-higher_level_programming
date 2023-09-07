@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-import sys
 
-arguments = sys.argv[1:]
+if __name__ == "__main__":
+    import sys
 
-num_args = len(arguments)
+    num_args = len(sys.argv) - 1
 
-output = f"{num_args} argument{'s' if num_args != 1 else ''}:"
-output += "" if num_args == 0 else "\n"
+    if num_args == 0:
+        print("No arguments.")
+    elif num_args == 1:
+        print("1 argument:")
+    else:
+        print(f"{num_args} arguments:")
 
-for i, arg in enumerate(arguments, 1):
-    output += f"{i}: {arg}\n"
-
-print(output, end="")
+    for i in range(num_args):
+        print(f"{i + 1}: {sys.argv[i + 1]}")
