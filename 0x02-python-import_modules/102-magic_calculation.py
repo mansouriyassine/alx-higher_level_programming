@@ -1,9 +1,12 @@
+#!/usr/bin/python3
 def magic_calculation(a, b):
+    add = __import__('magic_calculation_102').add
+    sub = __import__('magic_calculation_102').sub
+
     if a < b:
-        add = a + b
+        c = add(a, b)
         for i in range(4, 6):
-            add = add + i
-        return add
+            c = add(c, i)
+        return c
     else:
-        sub = a - b
-        return sub
+        return sub(a, b)
