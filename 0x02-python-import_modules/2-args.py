@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-if __name__ == "__main__":
-    """Print the number of and list of arguments"""
-    import sys
+import sys
 
-    argv = sys.argv
-    argc = len(argv) - 1
+arguments = sys.argv[1:]
 
-    print("{}{}".format(
-        argc,
-        " argument" + ("s:" if argc != 1 else ":") if argc > 0 else ".")
-    )
+num_args = len(arguments)
 
-    for i in range(1, argc + 1):
-        print("{}: {}".format(i, argv[i]))
+print(f"{num_args} argument{'s' if num_args != 1 else ''}:", end=" ")
+if num_args == 0:
+    print(".")
+else:
+    print("")
+
+for i, arg in enumerate(arguments, 1):
+    print(f"{i}: {arg}")
