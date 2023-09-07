@@ -5,11 +5,10 @@ arguments = sys.argv[1:]
 
 num_args = len(arguments)
 
-print(f"{num_args} argument{'s' if num_args != 1 else ''}:", end=" ")
-if num_args == 0:
-    print(".")
-else:
-    print("")
+output = f"{num_args} argument{'s' if num_args != 1 else ''}:"
+output += "" if num_args == 0 else "\n"
 
 for i, arg in enumerate(arguments, 1):
-    print(f"{i}: {arg}")
+    output += f"{i}: {arg}\n"
+
+print(output, end="")
