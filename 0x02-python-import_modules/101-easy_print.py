@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-import calling_script
+import sys
+sys.stdout.write("#pythoniscool\n")
