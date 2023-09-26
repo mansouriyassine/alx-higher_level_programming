@@ -8,6 +8,6 @@ def raise_exception_msg(message=""):
         message (str): The message to be included in the exception.
 
     Raises:
-        NameError: Always raises a NameError exception with the specified message.
+        NameError: Raises a NameError exception with the specified message.
     """
     raise NameError(message)
