@@ -1,0 +1,32 @@
+============================================
+''' This is the Start of Unit Testing... '''
+============================================
+''' TESTING WITH the following... '''
+
+''' Importing TEMPLATE function '''
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+==============
+SUCCESS CASES
+==============
+
+Test 1: Testing a successful case
+
+>>> result = lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+>>> expected = [[7, 10], [15, 22]]
+>>> result.tolist() == expected
+True
+
+Test 2: Testing another successful case
+
+>>> result = lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+>>> expected = [[13, 16]]
+>>> result.tolist() == expected
+True
+
+Test 3: Testing a successful case with non-square matrices
+
+>>> result = lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+>>> expected = [[9, 12, 15], [19, 26, 33]]
+>>> result.tolist() == expected
+True
