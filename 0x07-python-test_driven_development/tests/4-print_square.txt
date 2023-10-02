@@ -1,0 +1,85 @@
+=======================================
+''' Initiation of Unit Testing... '''
+=======================================
+''' TESTING PROCEDURES '''
+
+''' The following commands will execute the tests '''
+# python3 -m doctest -v ./tests/3-say_my_name.txt
+# python3 -m doctest -v ./tests/3-say_my_name | tail -2
+
+======================================
+''' Importing the 'say_my_name' Module '''
+======================================
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+==============
+SUCCESSFUL TEST CASES
+==============
+
+Category 1
+==========
+
+Test 1: Full Name Provided
+>>> say_my_name("Luis", "Colon")
+My name is Luis Colon
+
+Test 2: Both Names Are Empty Strings
+>>> say_my_name("")
+My name is  
+
+Test 3: Only the First Name Is Provided
+>>> say_my_name("Luis")
+My name is Luis 
+
+Test 4: Both Names Are Empty Strings
+>>> say_my_name("")
+My name is  
+
+==========================
+UNSUCCESSFUL TEST CASES
+==========================
+
+Category 2
+==========
+
+Test 5: First Name Is Not a String
+>>> say_my_name(5)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+Test 6: Last Name Is Not a String
+>>> say_my_name("Colon", 50)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+Test 7: No Arguments Provided
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Test 8: Last Name Provided Without a First Name (Invalid Syntax)
+>>> say_my_name(, "Colon")
+Traceback (most recent call last):
+...
+SyntaxError: invalid syntax
+
+Test 9: First Name Is Not a String
+>>> say_my_name(["aja"], 10)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+Test 10: Last Name Is Not a String
+>>> say_my_name(12, "")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+Test 11: None Provided as an Argument
+>>> say_my_name(None)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string

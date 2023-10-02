@@ -1,0 +1,101 @@
+============================================
+''' Beginning of Unit Testing... '''
+============================================
+''' TESTING SCENARIOS... '''
+
+''' Executes similar tests as below but provides additional insights '''
+# python3 -m doctest -v ./tests/5-text_indentation.txt
+# python3 -m doctest -v ./5-text_indentation.txt | tail -2
+
+======================================
+''' Importing TEMPLATE function ''''
+======================================
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+==============
+SUCCESSFUL CASES
+==============
+
+
+Category 1
+==========
+
+Test 1: Standard input.
+>>> text_indentation("A wizard is never late Frodo Baggins. Nor is he early? He arrives precisely when he means to.")
+A wizard is never late Frodo Baggins.
+<BLANKLINE>
+Nor is he early?
+<BLANKLINE>
+He arrives precisely when he means to.
+<BLANKLINE>
+
+Test 2: Leading whitespace
+>>> text_indentation("  Bilbo Baggins. Of the Shires.")
+Bilbo Baggins.
+<BLANKLINE>
+Of the Shires.
+<BLANKLINE>
+
+Test 3: Single string, no newline
+>>> text_indentation("Gandalf")
+Gandalf
+
+Test 4: Some ignored characters
+>>> text_indentation(" Hello: There ")
+Hello:
+<BLANKLINE>
+There
+
+
+Test 5: Including "." and "?"
+>>> text_indentation("Hola?.")
+Hola?
+<BLANKLINE>
+.
+<BLANKLINE>
+
+==========================
+CASES THAT SHOULD NOT SUCCEED
+==========================
+
+Category 2
+==========
+
+Test 6: None input
+>>> text_indentation(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+
+Test 7: Integer input
+>>> text_indentation(5)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+Test 8: Negative integer input
+>>> text_indentation(-2)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+
+Test 9: Float input
+>>> text_indentation(2.4)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+
+Test 10: Negative float input
+>>> text_indentation(-3.2)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+Test 11: No arguments
+>>> text_indentation()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
