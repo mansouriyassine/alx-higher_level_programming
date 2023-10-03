@@ -2,8 +2,8 @@
 """Solves the N-queens puzzle, finding all possible solutions,
 including translations and reflections.
 
-This program uses a virtual backtracking approach without recursion.
-It generates solutions for the N-queens puzzle and prints them.
+This program uses a  backtracking approach without recursion.
+It generates solutions for the N-queens puzzle.
 
 Usage:
     $ ./101-nqueens.py N
@@ -92,5 +92,9 @@ for col in range(N):
                 new_candidates.append(temp)
     candidates = new_candidates
 
-for item in format_coordinates(candidates):
+# Sort the solutions based on the row values
+solutions = format_coordinates(candidates)
+solutions.sort(key=lambda x: x[0])
+
+for item in solutions:
     print(item)
