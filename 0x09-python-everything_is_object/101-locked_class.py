@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
+"""
+This module defines a class called LockedClass, which enforces
+strict attribute control, allowing only 'first_name' as a valid attribute.
+"""
+
+
 class LockedClass:
-    def __setattr__(self, name, value):
-        if name != 'first_name':
-            raise AttributeError(
-                "'LockedClass' object has no attribute '{}'".format(name)
-            )
+    """
+    LockedClass ensures strict control over attribute creation,
+    allowing only 'first_name' as an acceptable attribute.
+    """
+    __slots__ = ["first_name"]
