@@ -1,76 +1,53 @@
-This is the Start of Unit Testing...
+# Test case 1: Multiply two 2x2 matrices with integers
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[5, 6], [7, 8]]
+Expected Result:
+[[19, 22], [43, 50]]
 
-TESTING WITH the following...
+# Test case 2: Multiply a 2x2 matrix with a 2x3 matrix with integers and floats
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[1.5, 2.5, 3.5], [4.5, 6.5, 7.5]]
+Expected Result:
+[[10.5, 15.5, 18.5], [22.5, 33.5, 40.5]]
 
-Does the same as test below, but gives more details
-# python3 -m doctest -v ./tests/100-matrix_mul.txt
-# python3 -m doctest -v ./100-matrix_mul.txt | tail -2
+# Test case 3: Multiply a 3x2 matrix with a 2x2 matrix with integers
+matrix_a = [[1, 2], [3, 4], [5, 6]]
+matrix_b = [[7, 8], [9, 10]]
+Expected Result:
+[[25, 28], [57, 64], [89, 100]]
 
-Importing TEMPLATE function
->>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+# Test case 4: Multiply two 3x3 matrices with floats
+matrix_a = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
+matrix_b = [[9.0, 8.0, 7.0], [6.0, 5.0, 4.0], [3.0, 2.0, 1.0]]
+Expected Result:
+[[30.0, 24.0, 18.0], [84.0, 69.0, 54.0], [138.0, 114.0, 90.0]]
 
-SUCCESS CASES
+# Test case 5: Multiply an empty matrix_a with a non-empty matrix_b
+matrix_a = []
+matrix_b = [[1, 2], [3, 4]]
+Expected Result:
+ValueError: matrix_a can't be empty
 
-Category 1
+# Test case 6: Multiply a non-empty matrix_a with an empty matrix_b
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = []
+Expected Result:
+ValueError: matrix_b can't be empty
 
-Test 1: 2x2 matrix multiplication
->>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-[[7, 10], [15, 22]]
+# Test case 7: Multiply a matrix_a with empty rows with a non-empty matrix_b
+matrix_a = [[], []]
+matrix_b = [[1, 2], [3, 4]]
+Expected Result:
+ValueError: matrix_a can't contain empty rows
 
-Test 2: 1x2 matrix multiplication with 2x2 matrix
->>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
-[[13, 16]]
+# Test case 8: Multiply a non-empty matrix_a with a matrix_b with empty rows
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[]]
+Expected Result:
+ValueError: matrix_b can't contain empty rows
 
-Test 3: 1x2 matrix multiplication with 2x1 matrix
->>> matrix_mul([[1, 2]], [[3], [4]])
-[[11]]
-
-Category 2
-
-Test 4: Mismatched dimensions (2x2 and 3x3)
->>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-Traceback (most recent call last):
-...
-ValueError: m_a and m_b can't be multiplied
-
-Test 5: Empty matrix m_a
->>> matrix_mul([], [[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-ValueError: m_a and m_b can't be empty
-
-Test 6: Empty matrix m_b
->>> matrix_mul([[1, 2], [3, 4]], [])
-Traceback (most recent call last):
-...
-ValueError: m_a and m_b can't be empty
-
-Test 7: Non-integer/float elements in m_a
->>> matrix_mul([[1, 2], [3, '4']], [[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: m_a and m_b should be lists of lists containing only integers or floats and each row should have the same size
-
-Test 8: Non-integer/float elements in m_b
->>> matrix_mul([[1, 2], [3, 4]], [['1', 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: m_a and m_b should be lists of lists containing only integers or floats and each row should have the same size
-
-Test 9: Non-list input for m_a
->>> matrix_mul(123, [[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: m_a and m_b should be lists of lists containing only integers or floats and each row should have the same size
-
-Test 10: Non-list input for m_b
->>> matrix_mul([[1, 2], [3, 4]], '123')
-Traceback (most recent call last):
-...
-TypeError: m_a and m_b should be lists of lists containing only integers or floats and each row should have the same size
-
-Test 11: Missing input for m_a
->>> matrix_mul()
-Traceback (most recent call last):
-...
-TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+# Test case 9: Multiply two matrices with incompatible dimensions
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[1, 2, 3], [4, 5, 6]]
+Expected Result:
+ValueError: matrix_a and matrix_b can't be multiplied
