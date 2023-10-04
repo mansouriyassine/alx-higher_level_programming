@@ -1,0 +1,118 @@
+# Module Testing: 4-print_square
+
+# Using the print_square Function
+# ----------------------------------
+
+# To utilize the print_square function, you can import it from the module as follows:
+>>> print_square = __import__("4-print_square").print_square
+
+# Module Docstring Check
+# ----------------------
+
+# Ensure that the module has a meaningful docstring:
+>>> module_docstring = __import__("4-print_square").__doc__
+>>> len(module_docstring) > 1
+True
+
+# Function Docstring Check
+# ------------------------
+
+# Verify that the function itself is documented properly:
+>>> function_docstring = __import__("4-print_square").print_square.__doc__
+>>> len(function_docstring) > 1
+True
+
+# Checking for No Arguments
+# -------------------------
+
+# Attempt to call the function without providing the required size argument:
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+# Checking for Too Many Arguments
+# --------------------------------
+
+# Ensure that the function doesn't accept more than one argument:
+>>> print_square(1, 2)
+Traceback (most recent call last):
+...
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+# Checking for Passing None
+# ---------------------------
+
+# Test whether passing None as an argument results in the appropriate error:
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# Checking for Positive Integers
+# -------------------------------
+
+# Verify that the function works as expected with positive integer values:
+>>> print_square(4)
+####
+####
+####
+####
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+# Checking for Zero
+# ------------------
+
+# Ensure that passing 0 as an argument results in an empty output:
+>>> print_square(0)
+
+# Checking for Negative Integers
+# -------------------------------
+
+# Check whether negative integers result in a ValueError:
+>>> print_square(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+# Checking for Non-Number Types
+# ------------------------------
+
+# Verify that non-numeric types such as tuples, strings, and Booleans raise a TypeError:
+>>> print_square((1,))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square("3")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square(True)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# Checking for Non-Integer Number Types
+# --------------------------------------
+
+# Ensure that non-integer numeric types (floats) result in a TypeError:
+>>> print_square(1.0)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square(-5.5)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# These tests help ensure that the print_square function behaves correctly and handles various input scenarios as specified in the project requirements.
