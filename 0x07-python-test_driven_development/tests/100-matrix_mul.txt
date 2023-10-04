@@ -1,53 +1,76 @@
-# Test case 1: Multiply two 2x2 matrices with integers
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = [[5, 6], [7, 8]]
-Expected Result:
-[[19, 22], [43, 50]]
+The ``100-matrix_mul`` module
+=============================
 
-# Test case 2: Multiply a 2x2 matrix with a 2x3 matrix with integers and floats
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = [[1.5, 2.5, 3.5], [4.5, 6.5, 7.5]]
-Expected Result:
-[[10.5, 15.5, 18.5], [22.5, 33.5, 40.5]]
+Using the ``matrix_mul`` Function
+----------------------------------
 
-# Test case 3: Multiply a 3x2 matrix with a 2x2 matrix with integers
-matrix_a = [[1, 2], [3, 4], [5, 6]]
-matrix_b = [[7, 8], [9, 10]]
-Expected Result:
-[[25, 28], [57, 64], [89, 100]]
+Importing the function from the module:
+    >>> matrix_mul = __import__("100-matrix_mul").matrix_mul
 
-# Test case 4: Multiply two 3x3 matrices with floats
-matrix_a = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
-matrix_b = [[9.0, 8.0, 7.0], [6.0, 5.0, 4.0], [3.0, 2.0, 1.0]]
-Expected Result:
-[[30.0, 24.0, 18.0], [84.0, 69.0, 54.0], [138.0, 114.0, 90.0]]
+Checking for Module Docstring:
+    >>> module_docstring = __import__("100-matrix_mul").__doc__
+    >>> len(module_docstring) > 1
+    True
 
-# Test case 5: Multiply an empty matrix_a with a non-empty matrix_b
-matrix_a = []
-matrix_b = [[1, 2], [3, 4]]
-Expected Result:
-ValueError: matrix_a can't be empty
+Checking for Function Docstring:
+    >>> function_docstring = __import__("100-matrix_mul").matrix_mul.__doc__
+    >>> len(function_docstring) > 1
+    True
 
-# Test case 6: Multiply a non-empty matrix_a with an empty matrix_b
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = []
-Expected Result:
-ValueError: matrix_b can't be empty
+Checking for No Arguments Passed:
+    >>> matrix_mul()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 
-# Test case 7: Multiply a matrix_a with empty rows with a non-empty matrix_b
-matrix_a = [[], []]
-matrix_b = [[1, 2], [3, 4]]
-Expected Result:
-ValueError: matrix_a can't contain empty rows
+Checking for One Too Few Argument Passed:
+    >>> matrix_mul([[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
 
-# Test case 8: Multiply a non-empty matrix_a with a matrix_b with empty rows
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = [[]]
-Expected Result:
-ValueError: matrix_b can't contain empty rows
+Checking for Too Many Arguments Passed:
+    >>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]], [[9, 10], [11, 12]])
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_mul() takes 2 positional arguments but 3 were given
 
-# Test case 9: Multiply two matrices with incompatible dimensions
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = [[1, 2, 3], [4, 5, 6]]
-Expected Result:
-ValueError: matrix_a and matrix_b can't be multiplied
+Checking for Normal Use with Integers and Floats:
+    >>> matrix_mul([[1, 2], [3, 4]], [[1.5, 2.5, 3.5], [4.5, 6.5, 7.5]])
+    [[10.5, 15.5, 18.5], [22.5, 33.5, 40.5]]
+
+Checking for Passing a Non-list as m_a:
+    >>> matrix_mul(None, [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list
+
+Checking for Passing a Non-list as m_b:
+    >>> matrix_mul([[1, 2], [3, 4]], None)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list
+
+Checking for Passing an Empty m_a:
+    >>> matrix_mul([], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a can't be empty
+
+Checking for Passing m_a with Empty Rows:
+    >>> matrix_mul([[], []], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a can't be empty
+
+Checking for Passing an Empty m_b:
+    >>> matrix_mul([[1, 2], [3, 4]], [])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_b can't be empty
+
+Checking for Passing m_b with Empty Rows:
+    >>> matrix_mul([[1, 2], [3, 4]], [[]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_b can't be empty
