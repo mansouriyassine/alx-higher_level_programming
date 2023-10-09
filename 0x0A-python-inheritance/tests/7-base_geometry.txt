@@ -1,0 +1,83 @@
+The "7-base_geometry" Module
+===========================
+
+Introduction:
+--------------
+The "7-base_geometry" module defines a class called "BaseGeometry" that serves as a base class for geometric objects. It provides methods for validating integer values and an abstract method for calculating the area, which should be implemented by subclasses.
+
+Using the "BaseGeometry" Class:
+-------------------------------
+
+To use the "BaseGeometry" class, you can follow these examples:
+
+1. Importing the Class:
+    ```python
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    ```
+
+2. Creating an Instance:
+    You can create an instance of the "BaseGeometry" class as follows:
+    ```python
+    >>> bg = BaseGeometry()
+    ```
+
+3. Validating the Area Method:
+    The "area()" method is an abstract method that raises an exception if called directly:
+    ```python
+    >>> bg.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+    ```
+
+4. Validating Integer Values:
+    Use the "integer_validator(name, value)" method to validate integer values. It checks whether the value is an integer greater than 0. Examples:
+    ```python
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+    ```
+
+    If the value is not an integer, a "TypeError" is raised:
+    ```python
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+    ```
+
+    If the value is less than or equal to 0, a "ValueError" is raised:
+    ```python
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: age must be greater than 0
+    ```
+
+    Passing a positive integer value is valid:
+    ```python
+    >>> bg.integer_validator("name", 5)
+    ```
+
+    Passing incorrect arguments or missing arguments will result in appropriate exceptions:
+    ```python
+    >>> bg.integer_validator("name")
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> bg.integer_validator("name", 1, 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
+    ```
+
+    Passing non-integer types, such as tuples, lists, dicts, or "None," will also result in a "TypeError."
+
+Conclusion:
+------------
+The "BaseGeometry" class provides a foundation for geometric calculations with validation methods to ensure the integrity of integer values. Subclasses should implement the "area()" method to calculate specific geometric areas. These methods help maintain data consistency and reliability in geometric calculations.
