@@ -1,18 +1,22 @@
 #!/usr/bin/python3
 
 
-
 def write_file(filename="", text=""):
-    """Write a string to a text file (UTF-8) and return the number
-       of characters written. Existing content is overwritten.
+    """
+    Writes string to a text file and returns the number of characters written.
 
     Args:
-        filename (str): The name of the file to be opened.
-        text (str): The characters to be written to the file.
+        filename (str): The name of the file to write to.
+        text (str): The string to write to the file.
 
     Returns:
         int: The number of characters written to the file.
     """
     with open(filename, 'w', encoding='utf-8') as file:
-        chars_written = file.write(text)
-        return chars_written
+        return file.write(text)
+
+
+if __name__ == "__main__":
+    # Example usage:
+    nb_characters = write_file("my_first_file.txt", "This School is so cool!\n")
+    print(nb_characters)
