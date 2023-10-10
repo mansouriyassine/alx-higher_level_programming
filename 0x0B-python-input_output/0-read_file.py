@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-"""File Reader Module"""
 
-
-def read_and_print_file(filename=""):
-    """Reads a text file and prints its content to the console."""
+def read_file(filename=""):
     with open(filename, "r", encoding="utf-8") as file_to_read:
-        for line in file_to_read:
-            print(line, end="")
+        content = file_to_read.read()
+    return content
