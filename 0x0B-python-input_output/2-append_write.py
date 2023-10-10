@@ -1,26 +1,18 @@
 #!/usr/bin/python3
+"""File Appender: Append a string to the end of a UTF-8 text file."""
 
 
 def append_write(filename="", text=""):
     """
-    Appends a string to the end of a text
-    file and returns the number of characters added.
+    Append the provided text to a UTF-8 text file.
 
     Args:
-        filename (str): The name of the file to which text will be appended.
-        text (str): The text to append to the file.
+        filename (str): The name of the file to append to.
+        text (str): The text to be appended to the file.
 
     Returns:
-        int: The number of characters added to the file.
+        int: The number of characters appended to the file.
     """
-    with open(filename, 'a', encoding='utf-8') as file:
-        chars_added = file.write(text)
-        return chars_added
-
-
-if __name__ == "__main__":
-    filename = "file_append.txt"
-    text = "This School is so cool!\n"
-    nb_characters_added = append_write(filename, text)
-
-    print(nb_characters_added)
+    with open(filename, "a", encoding="utf-8") as file:
+        chars_appended = file.write(text)
+        return chars_appended
