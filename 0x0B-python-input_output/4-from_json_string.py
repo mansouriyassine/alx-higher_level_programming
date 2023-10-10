@@ -1,15 +1,15 @@
 #!/usr/bin/python3
+"""Defines a JSON string-to-object function."""
 import json
 
 
 def from_json_string(my_str):
-    """
-    Convert a JSON string to a Python data structure.
+    """Convert a JSON string to a Python object.
 
     Args:
-        my_str (str): The JSON string to be converted.
+        my_str (str): JSON string to be converted.
 
     Returns:
-        The Python data structure represented by the JSON string.
+        obj: Python object represented by the JSON string.
     """
     return json.loads(my_str)
