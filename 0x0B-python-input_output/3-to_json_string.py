@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""String to JSON Converter: Convert a string object to its JSON representation."""
+"""String to JSON Converter: Convert a string to its JSON representation."""
 import json
 
 
