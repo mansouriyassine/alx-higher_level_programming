@@ -1,17 +1,15 @@
 #!/usr/bin/python3
-"""Add command-line arguments to a Python list and save it to a file."""
-
+"""Add all arguments to a Python list and save them to a file."""
 import sys
 
-
 if __name__ == "__main__":
-    from json_management import save_to_json_file, load_from_json_file
+    from json_file_utils import save_to_json_file, load_from_json_file
 
     try:
-        items = load_from_json_file("add_item.json")
+        existing_items = load_from_json_file("add_item.json")
     except FileNotFoundError:
-        items = []
+        existing_items = []
 
-    items.extend(sys.argv[1:])
-
-    save_to_json_file(items, "add_item.json")
+    new_items = sys.argv[1:]
+    combined_items = existing_items + new_items
+    save_to_json_file(combined_items, "add_item.json")
