@@ -35,7 +35,9 @@ class Base:
     def save_to_file(cls, list_objs):
         """Save a list to a file after serializing it to JSON.
         """
-        list_data = [] if list_objs is None else [obj.to_dictionary() for obj in list_objs]
+        list_data = [] if list_objs is None else [
+            obj.to_dictionary() for obj in list_objs
+            ]
         filename = cls.__name__ + '.json'
         with open(filename, mode='w+') as file:
             file.write(cls.to_json_string(list_data))
