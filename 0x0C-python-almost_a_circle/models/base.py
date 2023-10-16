@@ -10,6 +10,7 @@ import os
 class Base:
     """Base Class used as a blueprint for other classes.
     """
+
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -25,7 +26,7 @@ class Base:
     def to_json_string(list_dictionaries=[]):
         """Serialize a list into JSON format.
         """
-        if not list_dictionaries:
+        if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
@@ -34,8 +35,7 @@ class Base:
     def save_to_file(cls, list_objs):
         """Save a list to a file after serializing it to JSON.
         """
-        list_data = [] if list_objs is None else \
-
+        list_data = [] if list_objs is None else [obj.to_dictionary() for obj in list_objs]
         filename = cls.__name__ + '.json'
         with open(filename, mode='w+') as file:
             file.write(cls.to_json_string(list_data))
@@ -44,7 +44,7 @@ class Base:
     def from_json_string(json_string):
         """Parse a JSON string and return a list.
         """
-        if not json_string:
+        if json_string is None or not json_string:
             return []
         else:
             return json.loads(json_string)
