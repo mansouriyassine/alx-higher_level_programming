@@ -1,8 +1,9 @@
 #!/usr/bin/node
-const commandLineArguments = process.argv;
 
-if (commandLineArguments.length <= 2) {
+const args = process.argv[2];
+
+if (args === undefined) {
   console.log('No argument');
 } else {
-  console.log(commandLineArguments[2]);
+  console.log(args);
 }
