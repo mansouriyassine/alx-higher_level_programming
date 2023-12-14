@@ -3,14 +3,16 @@ import MySQLdb
 import sys
 
 
-def list_states(username, password, db_name):
+def filter_states(username, password, db_name):
     """
-    Lists all states from the database
+    Lists all states starting with 'N' from the database
     """
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
                          passwd=password, db=db_name)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    query = ("SELECT * FROM states WHERE name LIKE 'N%' "
+             "ORDER BY id ASC")
+    cur.execute(query)
 
     for row in cur.fetchall():
         print(row)
@@ -21,4 +23,4 @@ def list_states(username, password, db_name):
 
 if __name__ == "__main__":
     if len(sys.argv) == 4:
-        list_states(sys.argv[1], sys.argv[2], sys.argv[3])
+        filter_states(sys.argv[1], sys.argv[2], sys.argv[3])
