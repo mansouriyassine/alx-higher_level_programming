@@ -1,38 +1,28 @@
 #!/usr/bin/python3
+"""
+This script displays all values in the states table of hbtn_0e_0_usa where
+name matches the argument
+"""
+
 import MySQLdb
 import sys
 
+if __name__ == "__main__":
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_search = sys.argv[4]
 
-def filter_states_by_input(username, password, db_name, state_name):
-    """
-    Display all values in the states table where name matches the argument
-    """
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db_name
-    )
+    db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                         passwd=password, db=database)
     cur = db.cursor()
-    query = (
-        "SELECT * FROM states WHERE name = '{}' "
-        "ORDER BY id ASC"
-    ).format(state_name)
+    query = ("SELECT * FROM states WHERE name = '{}' "
+             "ORDER BY id ASC").format(state_search)
     cur.execute(query)
 
-    for row in cur.fetchall():
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
 
     cur.close()
     db.close()
-
-
-if __name__ == "__main__":
-    if len(sys.argv) == 5:
-        filter_states_by_input(
-            sys.argv[1],
-            sys.argv[2],
-            sys.argv[3],
-            sys.argv[4]
-        )
