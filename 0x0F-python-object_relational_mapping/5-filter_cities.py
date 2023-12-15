@@ -1,19 +1,19 @@
 #!/usr/bin/python3
+"""
+This script lists all cities of a specific state in the database hbtn_0e_4_usa
+"""
+
 import MySQLdb
 import sys
 
+if __name__ == "__main__":
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    state_name = sys.argv[4]
 
-def list_cities_by_state(username, password, db_name, state_name):
-    """
-    Lists all cities of a given state
-    """
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db_name
-    )
+    db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                         passwd=password, db=database)
     cur = db.cursor()
 
     query = """
@@ -25,18 +25,8 @@ def list_cities_by_state(username, password, db_name, state_name):
     """
     cur.execute(query, (state_name,))
 
-    cities = [row[0] for row in cur.fetchall()]
-    print(", ".join(cities))
+    query_rows = cur.fetchall()
+    print(", ".join(city[0] for city in query_rows))
 
     cur.close()
     db.close()
-
-
-if __name__ == "__main__":
-    if len(sys.argv) == 5:
-        list_cities_by_state(
-            sys.argv[1],
-            sys.argv[2],
-            sys.argv[3],
-            sys.argv[4]
-        )
