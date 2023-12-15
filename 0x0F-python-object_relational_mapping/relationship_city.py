@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """
-Defines the City class
+Definition of the City class
 """
-
-from sqlalchemy import Column, Integer, String, ForeignKey
 from relationship_state import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
 class City(Base):
+    """
+    Represents a city, linked to a state.
+    """
     __tablename__ = 'cities'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
