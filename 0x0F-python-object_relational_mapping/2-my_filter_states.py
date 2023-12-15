@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This script displays all values in the states table of hbtn_0e_0_usa
-where name matches the argument, safe from MySQL injections.
+This script displays all values in the states table of hbtn_0e_0_usa where
+name matches the argument
 """
 
 import MySQLdb
@@ -16,9 +16,9 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
                          passwd=password, db=database)
     cur = db.cursor()
-
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (state_search,))
+    query = ("SELECT * FROM states WHERE name = '{}' "
+             "ORDER BY id ASC").format(state_search)
+    cur.execute(query)
 
     query_rows = cur.fetchall()
     for row in query_rows:
