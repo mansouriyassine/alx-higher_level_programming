@@ -6,9 +6,11 @@ access token to access GitHub information and display your ID.
 import requests
 import sys
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: {} <username> <personal_access_token>".format(sys.argv[0]))
+        print("Usage: {} <username>".format(sys.argv[0]))
+        print("       {} <personal_access_token>".format(sys.argv[0]))
         sys.exit(1)
 
     username = sys.argv[1]

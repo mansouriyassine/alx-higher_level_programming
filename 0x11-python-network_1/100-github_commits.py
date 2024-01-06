@@ -6,7 +6,6 @@ of a repository by a user using the GitHub API.
 import requests
 import sys
 
-
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: {} <repository_name> <owner_name>".format(sys.argv[0]))
@@ -15,7 +14,9 @@ if __name__ == "__main__":
     repository_name = sys.argv[1]
     owner_name = sys.argv[2]
 
-    api_url = f"https://api.github.com/repos/{owner_name}/{repository_name}/commits"
+    api_url = (
+        f"https://api.github.com/repos/{owner_name}/{repository_name}/commits"
+    )
 
     response = requests.get(api_url)
 
